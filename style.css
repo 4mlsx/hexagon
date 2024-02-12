@@ -38,19 +38,23 @@ body {
 }
 
 .hex::before {
-  border: calc(0.5em * var(--Radius)) solid transparent;
-  border-left: 0;
-  border-right: calc(1em * var(--radius)) solid currentColor;
-  content: "";
-  height: var(--Radius);
+    border: calc(0.5em * var(--Radius)) solid transparent;
+    border-left: 0;
+    border-right: calc(1em * var(--radius)) solid currentColor;
+    content: "";
+    height: var(--Radius);
+    position: relative;
+    left: 0.5px; 
 }
 
 .hex::after  {
-  border: calc(0.5em * var(--Radius)) solid transparent;
-  border-left: calc(1em * var(--radius)) solid currentColor;
-  border-right: 0;
-  content: "";
-  height: var(--Radius);
+    border: calc(0.5em * var(--Radius)) solid transparent;
+    border-left: calc(1em * var(--radius)) solid currentColor;
+    border-right: 0;
+    content: "";
+    height: var(--Radius);
+    position: relative;
+    left: -0.5px;
 }
 
 .center {
@@ -90,7 +94,7 @@ body {
   .even {
     animation-duration: calc( var(--time) * 2 / 3 * 1s);
   }
-  
+
   .hex.first {
     animation-delay: calc( var(--time) / -1.75 * 1s );
   }
