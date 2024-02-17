@@ -1,5 +1,5 @@
 :root {
-  --sqrt3: 1.73205080757;                      /* Square root of 3 */
+  --sqrt3: 1.732050808;                      /* Square root of 3 */
   --time: 11;                                  /* Duration of animation  */
   --gap: 1;                                    /* Horizontal gap between hexagons */
   --radius: 3;                                 /* Radius of inscribed circle */
