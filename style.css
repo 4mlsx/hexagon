@@ -1,22 +1,44 @@
 :root {
-  --sqrt3: 1.732050808;                      /* Square root of 3 */
-  --time: 11;                                  /* Duration of animation  */
-  --gap: 1;                                    /* Horizontal gap between hexagons */
-  --radius: 3;                                 /* Radius of inscribed circle */
-  --Gap: var(--gap) / 2 * var(--sqrt3);        /* Vertical gap between hexagons */
-  --Radius: 2 / var(--sqrt3) * var(--radius);  /* Radius of circumcircle */
+  --sqrt3: 1.732050808;
+  /* Square root of 3 */
+  --time: 11;
+  /* Duration of animation  */
+  --gap: 1;
+  /* Horizontal gap between hexagons */
+  --radius: 3;
+  /* Radius of inscribed circle */
+  --Gap: var(--gap) / 2 * var(--sqrt3);
+  /* Vertical gap between hexagons */
+  --Radius: 2 / var(--sqrt3) * var(--radius);
+  /* Radius of circumcircle */
 }
 
 @keyframes odd-animation {
-  0%   { transform: translate(calc( 0.5 * var(--offset-x) ), calc( 0.5 * var(--offset-y) )) scale(0) }
-  33%  { transform: translate(calc(   1 * var(--offset-x) ), calc(   1 * var(--offset-y) )) scale(1) }
-  66%  { transform: translate(calc(   2 * var(--offset-x) ), calc(   2 * var(--offset-y) )) scale(1) }
-  100% { transform: translate(calc(   3 * var(--offset-x) ), calc(   3 * var(--offset-y) )) scale(0) }
+  0% {
+    transform: translate(calc(0.5 * var(--offset-x)), calc(0.5 * var(--offset-y))) scale(0)
+  }
+
+  33% {
+    transform: translate(calc(1 * var(--offset-x)), calc(1 * var(--offset-y))) scale(1)
+  }
+
+  66% {
+    transform: translate(calc(2 * var(--offset-x)), calc(2 * var(--offset-y))) scale(1)
+  }
+
+  100% {
+    transform: translate(calc(3 * var(--offset-x)), calc(3 * var(--offset-y))) scale(0)
+  }
 }
 
 @keyframes even-animation {
-  50%  { transform: translate(calc( 1 * var(--offset-x) ), calc( 1 * var(--offset-y) )) scale(1) }
-  100% { transform: translate(calc( 2 * var(--offset-x) ), calc( 2 * var(--offset-y) )) scale(0) }
+  50% {
+    transform: translate(calc(1 * var(--offset-x)), calc(1 * var(--offset-y))) scale(1)
+  }
+
+  100% {
+    transform: translate(calc(2 * var(--offset-x)), calc(2 * var(--offset-y))) scale(0)
+  }
 }
 
 body {
@@ -29,6 +51,30 @@ body {
   margin: 0;
 }
 
+h1 {
+  font-family: 'JetBrains Mono', sans-serif;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  font-size: 15px;
+  font-weight: 100;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+#instagram {
+  color: inherit;
+  text-decoration: underline;
+}
+
+#instagram:hover,
+#instagram:visited {
+  color: inherit;
+  text-decoration: underline;
+}
+
+
+
 .hex {
   color: white;
   display: flex;
@@ -38,23 +84,23 @@ body {
 }
 
 .hex::before {
-    border: calc(0.5em * var(--Radius)) solid transparent;
-    border-left: 0;
-    border-right: calc(1em * var(--radius)) solid currentColor;
-    content: "";
-    height: var(--Radius);
-    position: relative;
-    left: 0.5px; 
+  border: calc(0.5em * var(--Radius)) solid transparent;
+  border-left: 0;
+  border-right: calc(1em * var(--radius)) solid currentColor;
+  content: "";
+  height: var(--Radius);
+  position: relative;
+  left: 0.5px;
 }
 
-.hex::after  {
-    border: calc(0.5em * var(--Radius)) solid transparent;
-    border-left: calc(1em * var(--radius)) solid currentColor;
-    border-right: 0;
-    content: "";
-    height: var(--Radius);
-    position: relative;
-    left: -0.5px;
+.hex::after {
+  border: calc(0.5em * var(--Radius)) solid transparent;
+  border-left: calc(1em * var(--radius)) solid currentColor;
+  border-right: 0;
+  content: "";
+  height: var(--Radius);
+  position: relative;
+  left: -0.5px;
 }
 
 .center {
@@ -63,16 +109,17 @@ body {
 
 .odd,
 .even {
-  --global-offset-x: calc( 0.5em * var(--gap) + var(--radius) * 1em);
-  --global-offset-y: calc( 1.5em * var(--Radius) + var(--Gap) * 1em);
+  --global-offset-x: calc(0.5em * var(--gap) + var(--radius) * 1em);
+  --global-offset-y: calc(1.5em * var(--Radius) + var(--Gap) * 1em);
   animation: infinite cubic-bezier(.21, .61, .01, .89);
   position: absolute;
-  transform: translate(0, 0) scale(0);  
+  transform: translate(0, 0) scale(0);
 }
 
 .odd {
   animation-duration: 11s;
 }
+
 .even {
   animation-duration: 7.333333333s;
 }
@@ -80,9 +127,11 @@ body {
 .hex.first {
   animation-delay: -6.2857142857s;
 }
+
 .hex.second {
   animation-delay: -2.619047619s;
 }
+
 .hex.third {
   animation-delay: 1.0476190476s;
 }
@@ -91,102 +140,116 @@ body {
   .odd {
     animation-duration: calc(var(--time) * 1s);
   }
+
   .even {
-    animation-duration: calc( var(--time) * 2 / 3 * 1s);
+    animation-duration: calc(var(--time) * 2 / 3 * 1s);
   }
 
   .hex.first {
-    animation-delay: calc( var(--time) / -1.75 * 1s );
+    animation-delay: calc(var(--time) / -1.75 * 1s);
   }
+
   .hex.second {
-    animation-delay: calc( var(--time) * 1.25 / -5.25 * 1s );
+    animation-delay: calc(var(--time) * 1.25 / -5.25 * 1s);
   }
+
   .hex.third {
-    animation-delay: calc( var(--time) * -0.25 / -2.625 * 1s );
+    animation-delay: calc(var(--time) * -0.25 / -2.625 * 1s);
   }
 }
 
 .hex.one {
-  --offset-x: calc( var(--global-offset-x) * 1 );
-  --offset-y: calc( var(--global-offset-y) * -1 );
+  --offset-x: calc(var(--global-offset-x) * 1);
+  --offset-y: calc(var(--global-offset-y) * -1);
   animation-name: odd-animation;
   bottom: 0;
   left: 0;
 }
+
 .hex.two {
-  --offset-x: calc( var(--global-offset-x) * 1.5 );
-  --offset-y: calc( var(--global-offset-y) * -0.5 );
+  --offset-x: calc(var(--global-offset-x) * 1.5);
+  --offset-y: calc(var(--global-offset-y) * -0.5);
   animation-name: even-animation;
-  bottom: calc( var(--global-offset-y) * 0.5 );
-  left: calc( var(--global-offset-x) * 1.5 );
+  bottom: calc(var(--global-offset-y) * 0.5);
+  left: calc(var(--global-offset-x) * 1.5);
 }
+
 .hex.three {
-  --offset-x: calc( var(--global-offset-x) * 2 );
-  --offset-y: calc( var(--global-offset-y) * 0 );
+  --offset-x: calc(var(--global-offset-x) * 2);
+  --offset-y: calc(var(--global-offset-y) * 0);
   animation-name: odd-animation;
   bottom: 0;
   right: 0;
 }
+
 .hex.four {
-  --offset-x: calc( var(--global-offset-x) * 1.5 );
-  --offset-y: calc( var(--global-offset-y) * 0.5 );
+  --offset-x: calc(var(--global-offset-x) * 1.5);
+  --offset-y: calc(var(--global-offset-y) * 0.5);
   animation-name: even-animation;
-  top: calc( var(--global-offset-y) * 0.5 );
-  left: calc( var(--global-offset-x) * 1.5 );
+  top: calc(var(--global-offset-y) * 0.5);
+  left: calc(var(--global-offset-x) * 1.5);
 }
+
 .hex.five {
-  --offset-x: calc( var(--global-offset-x) * 1 );
-  --offset-y: calc( var(--global-offset-y) * 1 );
+  --offset-x: calc(var(--global-offset-x) * 1);
+  --offset-y: calc(var(--global-offset-y) * 1);
   animation-name: odd-animation;
   top: 0;
   left: 0;
 }
+
 .hex.six {
-  --offset-x: calc( var(--global-offset-x) * 0 );
-  --offset-y: calc( var(--global-offset-y) * 1 );
+  --offset-x: calc(var(--global-offset-x) * 0);
+  --offset-y: calc(var(--global-offset-y) * 1);
   animation-name: even-animation;
-  top: calc( var(--global-offset-y) * 1 );
+  top: calc(var(--global-offset-y) * 1);
   left: 0;
 }
+
 .hex.seven {
-  --offset-x: calc( var(--global-offset-x) * -1 );
-  --offset-y: calc( var(--global-offset-y) * 1 );
+  --offset-x: calc(var(--global-offset-x) * -1);
+  --offset-y: calc(var(--global-offset-y) * 1);
   animation-name: odd-animation;
   top: 0;
   right: 0;
 }
+
 .hex.eight {
-  --offset-x: calc( var(--global-offset-x) * -1.5 );
-  --offset-y: calc( var(--global-offset-y) * 0.5 );
+  --offset-x: calc(var(--global-offset-x) * -1.5);
+  --offset-y: calc(var(--global-offset-y) * 0.5);
   animation-name: even-animation;
-  top: calc( var(--global-offset-y) * 0.5 );
-  right: calc( var(--global-offset-x) * 1.5 );
+  top: calc(var(--global-offset-y) * 0.5);
+  right: calc(var(--global-offset-x) * 1.5);
 }
+
 .hex.nine {
-  --offset-x: calc( var(--global-offset-x) * -2 );
-  --offset-y: calc( var(--global-offset-y) * 0 );
+  --offset-x: calc(var(--global-offset-x) * -2);
+  --offset-y: calc(var(--global-offset-y) * 0);
   animation-name: odd-animation;
   top: 0;
   right: 0;
 }
+
 .hex.ten {
-  --offset-x: calc( var(--global-offset-x) * -1.5 );
-  --offset-y: calc( var(--global-offset-y) * -0.5 );
+  --offset-x: calc(var(--global-offset-x) * -1.5);
+  --offset-y: calc(var(--global-offset-y) * -0.5);
   animation-name: even-animation;
-  bottom: calc( var(--global-offset-y) * 0.5 );
-  right: calc( var(--global-offset-x) * 1.5 );
+  bottom: calc(var(--global-offset-y) * 0.5);
+  right: calc(var(--global-offset-x) * 1.5);
 }
+
 .hex.eleven {
-  --offset-x: calc( var(--global-offset-x) * -1 );
-  --offset-y: calc( var(--global-offset-y) * -1 );
+  --offset-x: calc(var(--global-offset-x) * -1);
+  --offset-y: calc(var(--global-offset-y) * -1);
   animation-name: odd-animation;
   bottom: 0;
   right: 0;
 }
+
 .hex.twelve {
-  --offset-x: calc( var(--global-offset-x) * 0 );
-  --offset-y: calc( var(--global-offset-y) * -1 );
+  --offset-x: calc(var(--global-offset-x) * 0);
+  --offset-y: calc(var(--global-offset-y) * -1);
   animation-name: even-animation;
-  bottom: calc( var(--global-offset-y) * 1 );
+  bottom: calc(var(--global-offset-y) * 1);
   left: 0;
 }
